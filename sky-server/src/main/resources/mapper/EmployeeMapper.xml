@@ -9,7 +9,7 @@
                 name = #{name},
             </if>
             <if test="username != null">
-                usernae = #{username},
+                username = #{username},
             </if>
             <if test="password != null">
                 password = #{password},
