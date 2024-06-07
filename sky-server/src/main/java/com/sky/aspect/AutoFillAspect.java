@@ -23,12 +23,12 @@ import java.time.LocalDateTime;
 @Slf4j
 public class AutoFillAspect {
 
-    // 定义切点
+    // 定义切点: 针对所有的mapper层的方法，且方法上有@AutoFill注解
     @Pointcut("execution(* com.sky.mapper.*.*(..)) && @annotation(com.sky.annotation.AutoFill)")
     public void autoFillPointCut() {
     }
 
-    // 定义前置通知
+    // 定义前置通知，作用于切点
     @Before("autoFillPointCut()")
     public void autoFill(JoinPoint joinPoint) {
         log.info("自动填充开始...");
