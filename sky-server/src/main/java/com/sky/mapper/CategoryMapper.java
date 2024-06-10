@@ -6,6 +6,7 @@ import com.sky.dto.CategoryDTO;
 import com.sky.dto.CategoryPageQueryDTO;
 import com.sky.entity.Category;
 import com.sky.enumeration.OperationType;
+import io.swagger.models.auth.In;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -17,7 +18,7 @@ public interface CategoryMapper {
 
     Page<Category> page(CategoryPageQueryDTO categoryPageQueryDTO);
 
-    List<Category> list(CategoryDTO categoryDTO);
+    List<Category> list(Integer type);
 
     @AutoFill(OperationType.INSERT)
     @Insert("insert into category (type, name, sort, status, create_user, update_user, create_time, update_time) " +

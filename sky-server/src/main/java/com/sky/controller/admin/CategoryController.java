@@ -27,7 +27,7 @@ public class CategoryController {
 
     @GetMapping("/list")
     public Result list(CategoryDTO categoryDTO) {
-        List<Category> list = categoryService.list(categoryDTO);
+        List<Category> list = categoryService.list(categoryDTO.getType());
         return Result.success(list);
     }
 

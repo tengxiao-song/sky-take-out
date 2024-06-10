@@ -10,7 +10,7 @@ import java.util.List;
 public interface CategoryService {
     PageResult page(CategoryPageQueryDTO categoryPageQueryDTO);
 
-    List<Category> list(CategoryDTO categoryDTO);
+    List<Category> list(Integer type);
 
     void add(CategoryDTO categoryDTO);
 
