@@ -3,6 +3,7 @@ package com.sky.controller.admin;
 import com.sky.constant.MessageConstant;
 import com.sky.result.Result;
 import com.sky.utils.AliOssUtil;
+import com.sky.utils.S3Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,9 @@ public class CommonController {
     @Autowired
     private AliOssUtil aliOssUtil;
 
+    @Autowired
+    private S3Util s3Util;
+
     // 参数是MultipartFile类型，上传文件的form表单中的name属性值必须是file
     @PostMapping("/upload")
     public Result<String> upload(MultipartFile file) {
@@ -28,6 +32,8 @@ public class CommonController {
             String suffix = originalFilename.substring(originalFilename.lastIndexOf("."));
             String fileName = UUID.randomUUID() + suffix; // 新文件名 = UUID + 后缀名
             String filePath = aliOssUtil.upload(file.getBytes(), fileName);
+//            String filePath = s3Util.upload(file.getBytes(), fileName);
+            System.out.println(filePath);
             return Result.success(filePath);
         } catch (IOException e) {
             throw new RuntimeException(e);
